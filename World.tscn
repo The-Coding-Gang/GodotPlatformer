@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Player.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 322.614, 26.4022 )
@@ -10,8 +11,7 @@ extents = Vector2( 322.614, 26.4022 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 756.712, 316.374 )
-speed = 90
-gravity = 40
+script = ExtResource( 3 )
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2( 193.663, 447.647 )
