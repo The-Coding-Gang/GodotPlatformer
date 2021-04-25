@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends KinematicBody2D
+
+#vector
+var velocity = Vector2(0, 0);
+
+#scalar
+export var speed = 400;
+export var gravity = 20;
+
+func _process(_delta):
+	apply_gravity()
+	move()
+	move_and_slide(velocity)
+
+
+
+func move():
+	if (Input.is_action_pressed(\"Right\")):
+		velocity.x = speed;
+	elif Input.is_action_pressed(\"Left\"):
+		velocity.x = -speed;
+	else :
+		velocity.x = 0;
+
+func apply_gravity():
+	velocity.y += gravity;
+
+
+
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 36.2968, 35.9354 )
+
+[node name="Player" type="KinematicBody2D"]
+script = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
